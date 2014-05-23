@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>login</title>
+	<link rel="stylesheet" href="./css/themes/default/jquery.mobile-1.4.2.min.css">
+	<link rel="shortcut icon" href="../favicon.ico">
+	<script src="./js/jquery.js"></script>
+	<script src="./js/jquery.mobile-1.4.2.min.js"></script>
+	<script>
+		$( document ).on( "pagecreate", function() {
+			$( "#theme-selector input" ).on( "change", function( event ) {
+				var themeClass = $( "#theme-selector input:checked" ).attr( "id" );
+
+				$( "#testpage" ).removeClass( "ui-page-theme-a ui-page-theme-b" ).addClass( "ui-page-theme-" + themeClass );
+				$( "#ui-body-test" ).removeClass( "ui-body-a ui-body-b" ).addClass( "ui-body-" + themeClass );
+				$( "#ui-bar-test, #ui-bar-form" ).removeClass( "ui-bar-a ui-bar-b" ).addClass( "ui-bar-" + themeClass );
+				$( ".ui-collapsible-content" ).removeClass( "ui-body-a ui-body-b" ).addClass( "ui-body-" + themeClass );
+				$( ".theme" ).text( themeClass );
+			});
+			$( "#opt-shadow input" ).on( "change", function( event ) {
+				if ( $( "#on" ).prop( "checked" ) ) {
+					$( "#testpage" ).removeClass( "noshadow" );
+				} else if ( $( "#off" ).prop( "checked" ) ) {
+					$( "#testpage" ).addClass( "noshadow" );
+				}
+			});
+			$( "#opt-iconshadow input" ).on( "change", function( event ) {
+				if ( $( "#off1" ).prop( "checked" ) ) {
+					$( "#testpage" ).removeClass( "ui-shadow-icon" );
+				} else if ( $( "#on1" ).prop( "checked" ) ) {
+					$( "#testpage" ).addClass( "ui-shadow-icon" );
+				}
+			});
+			$( "#opt-navbars input" ).on( "change", function( event ) {
+				if ( $( "#show" ).prop( "checked" ) ) {
+					$( "#testpage .ui-navbar" ).show();
+					$( "#testpage .ui-footer h4" ).hide();
+				} else if ( $( "#hide" ).prop( "checked" ) ) {
+					$( "#testpage .ui-navbar" ).hide();
+					$( "#testpage .ui-footer h4" ).show();
+				}
+			});
+		});
+	</script>
+	<style>
+		.noshadow * {
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			box-shadow: none !important;
+		}
+		form.ui-mini .ui-field-contain fieldset.ui-controlgroup legend small {
+			color: #666;
+		}
+	</style>
+</head>
+<body>
+
+	<div data-role="header">
+		<h1>login</h1>
+		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-back ui-btn-icon-left ui-btn-icon-notext">Back</a>
+		<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-gear">Button</a>
+
+	</div><!-- /header -->
+
+	<div class="ui-content" role="main">
+
+		<form>
+			<div class="ui-field-contain">
+				<label for="name2">user name:</label>
+				<input type="text" name="name2" id="name2" value="" data-clear-btn="true">
+			</div>
+			<div class="ui-field-contain">
+				<label for="name2">password:</label>
+				<input type="password" name="name2" id="name2" value="" data-clear-btn="true">
+			</div>			
+
+			<div class="ui-field-contain">
+				<label for="select-native-1">language:</label>
+				<select name="select-native-1" id="select-native-1">
+					<option value="1">English</option>
+					<option value="2">中文-简体</option>
+					<option value="3">中文-繁体</option>
+				</select>
+			</div>
+
+			<div class="ui-field-contain">
+				<!-- <label for="submit-1">Send form:</label>-->
+				<input type="submit" id="submit-1" value="Send">
+			</div>
+		</form>
+
+		<form class="ui-mini">
+		<div class="ui-field-contain" id="theme-selector">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>Theme:</legend>
+				<label for="a">W</label>
+				<input type="radio" name="theme" id="a" checked>
+				<label for="b">B</label>
+				<input type="radio" name="theme" id="b">
+			</fieldset>
+		</div>
+		</form>
+
+</div>
+
+</body>
+</html>
